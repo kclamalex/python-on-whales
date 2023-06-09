@@ -1,0 +1,2216 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Python on whales docs">
+      
+      
+      
+      
+        <link rel="prev" href="../context/">
+      
+      
+        <link rel="next" href="../manifest/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.14">
+    
+    
+      
+        <title>docker image - Python on whales</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.85bb2934.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Python on whales" class="md-header__button md-logo" aria-label="Python on whales" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python on whales
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              docker image
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gabrieldemarmiesse/python-on-whales" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Python on whales" class="md-nav__button md-logo" aria-label="Python on whales" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Python on whales
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gabrieldemarmiesse/python-on-whales" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_client/" class="md-nav__link">
+        Docker client
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Sub-commands
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Sub-commands
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../buildx/" class="md-nav__link">
+        docker buildx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compose/" class="md-nav__link">
+        docker compose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/" class="md-nav__link">
+        docker config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        docker container
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../context/" class="md-nav__link">
+        docker context
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          docker image
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        docker image
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.exists" class="md-nav__link">
+    exists()
+  </a>
+  
+    <nav class="md-nav" aria-label="exists()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.exists--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.history" class="md-nav__link">
+    history()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.import_" class="md-nav__link">
+    import_()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.inspect" class="md-nav__link">
+    inspect()
+  </a>
+  
+    <nav class="md-nav" aria-label="inspect()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.inspect--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.inspect--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.legacy_build" class="md-nav__link">
+    legacy_build()
+  </a>
+  
+    <nav class="md-nav" aria-label="legacy_build()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.legacy_build--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.list" class="md-nav__link">
+    list()
+  </a>
+  
+    <nav class="md-nav" aria-label="list()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.list--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.load" class="md-nav__link">
+    load()
+  </a>
+  
+    <nav class="md-nav" aria-label="load()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.load--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.prune" class="md-nav__link">
+    prune()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.pull" class="md-nav__link">
+    pull()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.push" class="md-nav__link">
+    push()
+  </a>
+  
+    <nav class="md-nav" aria-label="push()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.push--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.remove" class="md-nav__link">
+    remove()
+  </a>
+  
+    <nav class="md-nav" aria-label="remove()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.remove--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.save" class="md-nav__link">
+    save()
+  </a>
+  
+    <nav class="md-nav" aria-label="save()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.save--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.save--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.save--example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.tag" class="md-nav__link">
+    tag()
+  </a>
+  
+    <nav class="md-nav" aria-label="tag()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.tag--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manifest/" class="md-nav__link">
+        docker manifest
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        docker network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../node/" class="md-nav__link">
+        docker node
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plugin/" class="md-nav__link">
+        docker plugin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secret/" class="md-nav__link">
+        docker secret
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../service/" class="md-nav__link">
+        docker service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stack/" class="md-nav__link">
+        docker stack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../swarm/" class="md-nav__link">
+        docker swarm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system/" class="md-nav__link">
+        docker system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task/" class="md-nav__link">
+        docker task
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trust/" class="md-nav__link">
+        docker trust
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../volume/" class="md-nav__link">
+        docker volume
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Docker objects
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Docker objects
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/builders/" class="md-nav__link">
+        Builders
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/configs/" class="md-nav__link">
+        Configs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/containers/" class="md-nav__link">
+        Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/images/" class="md-nav__link">
+        Images
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/networks/" class="md-nav__link">
+        Networks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/nodes/" class="md-nav__link">
+        Nodes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/plugins/" class="md-nav__link">
+        Plugins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/secrets/" class="md-nav__link">
+        Secrets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/services/" class="md-nav__link">
+        Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/stacks/" class="md-nav__link">
+        Stacks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/tasks/" class="md-nav__link">
+        Tasks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/volumes/" class="md-nav__link">
+        Volumes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          User guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          User guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_guide/docker_run/" class="md-nav__link">
+        docker.run() guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_guide/generic_resources/" class="md-nav__link">
+        Swarm generic resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_guide/running_python_on_whales_inside_a_container/" class="md-nav__link">
+        Running python-on-whales inside a container
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_guide/exceptions/" class="md-nav__link">
+        dealing with exceptions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.exists" class="md-nav__link">
+    exists()
+  </a>
+  
+    <nav class="md-nav" aria-label="exists()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.exists--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.history" class="md-nav__link">
+    history()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.import_" class="md-nav__link">
+    import_()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.inspect" class="md-nav__link">
+    inspect()
+  </a>
+  
+    <nav class="md-nav" aria-label="inspect()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.inspect--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.inspect--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.legacy_build" class="md-nav__link">
+    legacy_build()
+  </a>
+  
+    <nav class="md-nav" aria-label="legacy_build()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.legacy_build--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.list" class="md-nav__link">
+    list()
+  </a>
+  
+    <nav class="md-nav" aria-label="list()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.list--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.load" class="md-nav__link">
+    load()
+  </a>
+  
+    <nav class="md-nav" aria-label="load()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.load--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.prune" class="md-nav__link">
+    prune()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.pull" class="md-nav__link">
+    pull()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.push" class="md-nav__link">
+    push()
+  </a>
+  
+    <nav class="md-nav" aria-label="push()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.push--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.remove" class="md-nav__link">
+    remove()
+  </a>
+  
+    <nav class="md-nav" aria-label="remove()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.remove--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.save" class="md-nav__link">
+    save()
+  </a>
+  
+    <nav class="md-nav" aria-label="save()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.save--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.save--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.save--example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.tag" class="md-nav__link">
+    tag()
+  </a>
+  
+    <nav class="md-nav" aria-label="tag()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.image.cli_wrapper.ImageCLI.tag--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h1 id="python_on_whales.components.image.cli_wrapper.ImageCLI" class="doc doc-heading">
+        <span class="doc doc-object-name doc-class-name">ImageCLI</span>
+
+
+</h1>
+
+
+  <div class="doc doc-contents first">
+
+
+
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.image.cli_wrapper.ImageCLI.exists" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">exists</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">exists</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Returns <code>True</code> if the image exists. <code>False</code> otherwise.</p>
+<p>It's just calling <code>docker.image.inspect(...)</code> and verifies that it doesn't throw
+ a <code>python_on_whales.exceptions.NoSuchImage</code>.</p>
+<h3 id="python_on_whales.components.image.cli_wrapper.ImageCLI.exists--returns">Returns</h3>
+<pre><code>A `bool`
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.image.cli_wrapper.ImageCLI.history" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">history</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">history</span><span class="p">()</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Not yet implemented</p>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.image.cli_wrapper.ImageCLI.import_" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">import_</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">import_</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">changes</span><span class="o">=</span><span class="p">[],</span> <span class="n">message</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">platform</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Import the contents from a tarball to create a filesystem image</p>
+<p>Alias: <code>docker.import_(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>changes</code></td>
+          <td>
+                <code><span title="typing.List">List</span>[str]</code>
+          </td>
+          <td><p>Apply Dockerfile instruction to the created image</p></td>
+          <td>
+                <code>[]</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>message</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Set commit message for imported image</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>platform</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Set platform if server is multi-platform capable</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.image.cli_wrapper.ImageCLI.inspect" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">inspect</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">inspect</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Creates a <code>python_on_whales.Image</code> object.</p>
+<h3 id="python_on_whales.components.image.cli_wrapper.ImageCLI.inspect--returns">Returns</h3>
+<pre><code>`python_on_whales.Image`, or `List[python_on_whales.Image]` if the input
+was a list of strings.
+</code></pre>
+<h3 id="python_on_whales.components.image.cli_wrapper.ImageCLI.inspect--raises">Raises</h3>
+<pre><code>`python_on_whales.exceptions.NoSuchImage` if one of the images does not exists.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.image.cli_wrapper.ImageCLI.legacy_build" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">legacy_build</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">legacy_build</span><span class="p">(</span><span class="n">context_path</span><span class="p">,</span> <span class="n">add_hosts</span><span class="o">=</span><span class="p">{},</span> <span class="n">build_args</span><span class="o">=</span><span class="p">{},</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">{},</span> <span class="n">network</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pull</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[],</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Build a Docker image with the old Docker builder (meaning not using buildx/buildkit)</p>
+<p>As the name implies this is a legacy building method. Users are strongly encouraged to use
+<code>docker.build()</code> instead. The legacy builder will not be available in docker v22.06 and above.</p>
+<p>This function also won't run the legacy builder if the environment variable
+<code>DOCKER_BUILDKIT</code> is set to <code>1</code> or if you had run previously <code>docker buildx install</code> from bash
+or <code>docker.buildx.install()</code> from Python.</p>
+<p>Some resources on why moving to buildx/buildkit is necessary:</p>
+<ul>
+<li><a href="https://github.com/moby/moby/issues/40379">Proposal: make BuildKit the default builder on Linux</a></li>
+<li><a href="https://github.com/docker/cli/blob/master/docs/deprecated.md#legacy-builder-for-linux-images">Deprecated Engine Features: Legacy builder for Linux images</a></li>
+</ul>
+<p>A <code>python_on_whales.Image</code> is returned, even when using multiple tags.
+That is because it will produce a single image with multiple tags.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>context_path</code></td>
+          <td>
+                <code><span title="python_on_whales.utils.ValidPath">ValidPath</span></code>
+          </td>
+          <td><p>The path of the build context. Defaults to the current working directory</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>add_hosts</code></td>
+          <td>
+                <code><span title="typing.Dict">Dict</span>[str, str]</code>
+          </td>
+          <td><p>Hosts to add. <code>add_hosts={"my_host1": "192.168.32.35"}</code></p></td>
+          <td>
+                <code>{}</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>build_args</code></td>
+          <td>
+                <code><span title="typing.Dict">Dict</span>[str, str]</code>
+          </td>
+          <td><p>The build arguments.
+ex <code>build_args={"PY_VERSION": "3.7.8", "UBUNTU_VERSION": "20.04"}</code>.</p></td>
+          <td>
+                <code>{}</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cache</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Whether or not to use the cache, defaults to True</p></td>
+          <td>
+                <code>True</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>file</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="python_on_whales.utils.ValidPath">ValidPath</span>]</code>
+          </td>
+          <td><p>The path of the Dockerfile, defaults to <code>context_path/Dockerfile</code></p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>labels</code></td>
+          <td>
+                <code><span title="typing.Dict">Dict</span>[str, str]</code>
+          </td>
+          <td><p>Dict of labels to add to the image.
+<code>labels={"very-secure": "1", "needs-gpu": "0"}</code> for example.</p></td>
+          <td>
+                <code>{}</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>network</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>which network to use when building the Docker image</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>pull</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Always attempt to pull a newer version of the image</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>tags</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[str, <span title="typing.List">List</span>[str]]</code>
+          </td>
+          <td><p>Tag or tags to put on the resulting image.</p></td>
+          <td>
+                <code>[]</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>target</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Set the target build stage to build.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.image.cli_wrapper.ImageCLI.legacy_build--returns">Returns</h3>
+<pre><code>A `python_on_whales.Image`
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.image.cli_wrapper.ImageCLI.list" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">list</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">list</span><span class="p">(</span><span class="n">repository_or_tag</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">{},</span> <span class="nb">all</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Returns the list of Docker images present on the machine.</p>
+<p>Alias: <code>docker.images()</code></p>
+<p>Note that each image may have multiple tags.</p>
+<h3 id="python_on_whales.components.image.cli_wrapper.ImageCLI.list--returns">Returns</h3>
+<pre><code>A `List[python_on_whales.Image]` object.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.image.cli_wrapper.ImageCLI.load" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">load</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">load</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Loads one or multiple Docker image(s) from a tar or an iterator of <code>bytes</code>.</p>
+<p>Alias: <code>docker.load(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>input</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<span title="python_on_whales.utils.ValidPath">ValidPath</span>, bytes, <span title="typing.Iterator">Iterator</span>[bytes]]</code>
+          </td>
+          <td><p>Path or input stream to load the images from.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>quiet</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>If you don't want to display the progress bars.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.image.cli_wrapper.ImageCLI.load--returns">Returns</h3>
+<pre><code>`None` when using bytes as input. A `List[str]` (list of tags)
+ when a path is provided.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.image.cli_wrapper.ImageCLI.prune" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">prune</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">prune</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="p">{})</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Remove unused images</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>all</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Remove all unused images, not just dangling ones</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>filter</code></td>
+          <td>
+                <code><span title="typing.Dict">Dict</span>[str, str]</code>
+          </td>
+          <td><p>Provide filter values (e.g. <code>{"until": "&lt;timestamp&gt;"}</code>)</p></td>
+          <td>
+                <code>{}</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>The output of the CLI (the layers removed).</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.image.cli_wrapper.ImageCLI.pull" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">pull</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pull</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Pull one or more docker image(s)</p>
+<p>Alias: <code>docker.pull(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>x</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[str, <span title="typing.List">List</span>[str]]</code>
+          </td>
+          <td><p>The image name(s) . Can be a string or a list of strings. In case of
+list, multithreading is used to pull the images.
+The progress bars might look strange as multiple
+processes are drawing on the terminal at the same time.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>quiet</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>If you don't want to see the progress bars.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="python_on_whales.components.image.cli_wrapper.Image" href="../../docker_objects/images/#python_on_whales.Image">Image</a>, <span title="typing.List">List</span>[<a class="autorefs autorefs-internal" title="python_on_whales.components.image.cli_wrapper.Image" href="../../docker_objects/images/#python_on_whales.Image">Image</a>]]</code>
+          </td>
+          <td><p>The Docker image loaded (<code>python_on_whales.Image</code> object).</p></td>
+        </tr>
+        <tr>
+          <td>
+                <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="python_on_whales.components.image.cli_wrapper.Image" href="../../docker_objects/images/#python_on_whales.Image">Image</a>, <span title="typing.List">List</span>[<a class="autorefs autorefs-internal" title="python_on_whales.components.image.cli_wrapper.Image" href="../../docker_objects/images/#python_on_whales.Image">Image</a>]]</code>
+          </td>
+          <td><p>If a list was passed as input, then a <code>List[python_on_whales.Image]</code> will</p></td>
+        </tr>
+        <tr>
+          <td>
+                <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="python_on_whales.components.image.cli_wrapper.Image" href="../../docker_objects/images/#python_on_whales.Image">Image</a>, <span title="typing.List">List</span>[<a class="autorefs autorefs-internal" title="python_on_whales.components.image.cli_wrapper.Image" href="../../docker_objects/images/#python_on_whales.Image">Image</a>]]</code>
+          </td>
+          <td><p>be returned.</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.image.cli_wrapper.ImageCLI.push" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">push</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">push</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Push a tag or a repository to a registry</p>
+<p>Alias: <code>docker.push(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>x</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[str, <span title="typing.List">List</span>[str]]</code>
+          </td>
+          <td><p>Tag(s) or repo(s) to push. Can be a string or a list of strings.
+If it's a list of string, python-on-whales will push all the images with
+multiple threads. The progress bars might look strange as multiple
+processes are drawing on the terminal at the same time.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>quiet</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>If you don't want to see the progress bars.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.image.cli_wrapper.ImageCLI.push--raises">Raises</h3>
+<pre><code>`python_on_whales.exceptions.NoSuchImage` if one of the images does not exists.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.image.cli_wrapper.ImageCLI.remove" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">remove</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">remove</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">prune</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Remove one or more docker images.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>x</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<span title="python_on_whales.components.image.cli_wrapper.ValidImage">ValidImage</span>, <span title="typing.List">List</span>[<span title="python_on_whales.components.image.cli_wrapper.ValidImage">ValidImage</span>]]</code>
+          </td>
+          <td><p>Single image or list of Docker images to remove. You can use tags or
+<code>python_on_whales.Image</code> objects.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>force</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Force removal of the image</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>prune</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Delete untagged parents</p></td>
+          <td>
+                <code>True</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.image.cli_wrapper.ImageCLI.remove--raises">Raises</h3>
+<pre><code>`python_on_whales.exceptions.NoSuchImage` if one of the images does not exists.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.image.cli_wrapper.ImageCLI.save" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">save</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">save</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Save one or more images to a tar archive. Returns a stream if output is <code>None</code></p>
+<p>Alias: <code>docker.save(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>images</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<span title="python_on_whales.components.image.cli_wrapper.ValidImage">ValidImage</span>, <span title="typing.List">List</span>[<span title="python_on_whales.components.image.cli_wrapper.ValidImage">ValidImage</span>]]</code>
+          </td>
+          <td><p>Single docker image or list of docker images to save</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>output</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="python_on_whales.utils.ValidPath">ValidPath</span>]</code>
+          </td>
+          <td><p>Path of the tar archive to produce. If <code>output</code> is None, a generator
+of bytes is produced. It can be used to stream those bytes elsewhere,
+to another Docker daemon for example.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.image.cli_wrapper.ImageCLI.save--returns">Returns</h3>
+<pre><code>`Optional[Iterator[bytes]]`. If output is a path, nothing is returned.
+</code></pre>
+<h3 id="python_on_whales.components.image.cli_wrapper.ImageCLI.save--raises">Raises</h3>
+<pre><code>`python_on_whales.exceptions.NoSuchImage` if one of the images does not exists.
+</code></pre>
+<h3 id="python_on_whales.components.image.cli_wrapper.ImageCLI.save--example">Example</h3>
+<p>An example of transfer of an image from a local Docker daemon to a remote Docker
+daemon. We assume that the remote machine has an ssh access:</p>
+<pre><code class="language-python">from python_on_whales import DockerClient
+
+local_docker = DockerClient()
+remote_docker = DockerClient(host=&quot;ssh://my_user@186.167.32.84&quot;)
+
+image_name = &quot;busybox:1&quot;
+local_docker.pull(image_name)
+bytes_iterator = local_docker.image.save(image_name)
+
+remote_docker.image.load(bytes_iterator)
+</code></pre>
+<p>Of course the best solution is to use a registry to transfer image but
+it's a cool example nonetheless.</p>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.image.cli_wrapper.ImageCLI.tag" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">tag</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">tag</span><span class="p">(</span><span class="n">source_image</span><span class="p">,</span> <span class="n">new_tag</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Adds a tag to a Docker image.</p>
+<p>Alias: <code>docker.tag(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>source_image</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="python_on_whales.components.image.cli_wrapper.Image" href="../../docker_objects/images/#python_on_whales.Image">Image</a>, str]</code>
+          </td>
+          <td><p>The Docker image to tag. You can use a tag to reference it.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>new_tag</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>The tag to add to the Docker image.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.image.cli_wrapper.ImageCLI.tag--raises">Raises</h3>
+<pre><code>`python_on_whales.exceptions.NoSuchImage` if the image does not exists.
+</code></pre>
+
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>

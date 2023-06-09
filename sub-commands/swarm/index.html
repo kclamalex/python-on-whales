@@ -1,0 +1,1653 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Python on whales docs">
+      
+      
+      
+      
+        <link rel="prev" href="../stack/">
+      
+      
+        <link rel="next" href="../system/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.14">
+    
+    
+      
+        <title>docker swarm - Python on whales</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.85bb2934.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python_on_whales.components.swarm.cli_wrapper.SwarmCLI" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Python on whales" class="md-header__button md-logo" aria-label="Python on whales" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python on whales
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              docker swarm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gabrieldemarmiesse/python-on-whales" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Python on whales" class="md-nav__button md-logo" aria-label="Python on whales" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Python on whales
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gabrieldemarmiesse/python-on-whales" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_client/" class="md-nav__link">
+        Docker client
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Sub-commands
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Sub-commands
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../buildx/" class="md-nav__link">
+        docker buildx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compose/" class="md-nav__link">
+        docker compose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/" class="md-nav__link">
+        docker config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        docker container
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../context/" class="md-nav__link">
+        docker context
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image/" class="md-nav__link">
+        docker image
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manifest/" class="md-nav__link">
+        docker manifest
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        docker network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../node/" class="md-nav__link">
+        docker node
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plugin/" class="md-nav__link">
+        docker plugin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secret/" class="md-nav__link">
+        docker secret
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../service/" class="md-nav__link">
+        docker service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stack/" class="md-nav__link">
+        docker stack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          docker swarm
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        docker swarm
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.swarm.cli_wrapper.SwarmCLI.ca" class="md-nav__link">
+    ca()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.swarm.cli_wrapper.SwarmCLI.init" class="md-nav__link">
+    init()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.swarm.cli_wrapper.SwarmCLI.join" class="md-nav__link">
+    join()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.swarm.cli_wrapper.SwarmCLI.join_token" class="md-nav__link">
+    join_token()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.swarm.cli_wrapper.SwarmCLI.leave" class="md-nav__link">
+    leave()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.swarm.cli_wrapper.SwarmCLI.unlock" class="md-nav__link">
+    unlock()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.swarm.cli_wrapper.SwarmCLI.unlock_key" class="md-nav__link">
+    unlock_key()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.swarm.cli_wrapper.SwarmCLI.update" class="md-nav__link">
+    update()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system/" class="md-nav__link">
+        docker system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task/" class="md-nav__link">
+        docker task
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trust/" class="md-nav__link">
+        docker trust
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../volume/" class="md-nav__link">
+        docker volume
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Docker objects
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Docker objects
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/builders/" class="md-nav__link">
+        Builders
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/configs/" class="md-nav__link">
+        Configs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/containers/" class="md-nav__link">
+        Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/images/" class="md-nav__link">
+        Images
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/networks/" class="md-nav__link">
+        Networks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/nodes/" class="md-nav__link">
+        Nodes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/plugins/" class="md-nav__link">
+        Plugins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/secrets/" class="md-nav__link">
+        Secrets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/services/" class="md-nav__link">
+        Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/stacks/" class="md-nav__link">
+        Stacks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/tasks/" class="md-nav__link">
+        Tasks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/volumes/" class="md-nav__link">
+        Volumes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          User guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          User guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_guide/docker_run/" class="md-nav__link">
+        docker.run() guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_guide/generic_resources/" class="md-nav__link">
+        Swarm generic resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_guide/running_python_on_whales_inside_a_container/" class="md-nav__link">
+        Running python-on-whales inside a container
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_guide/exceptions/" class="md-nav__link">
+        dealing with exceptions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.swarm.cli_wrapper.SwarmCLI.ca" class="md-nav__link">
+    ca()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.swarm.cli_wrapper.SwarmCLI.init" class="md-nav__link">
+    init()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.swarm.cli_wrapper.SwarmCLI.join" class="md-nav__link">
+    join()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.swarm.cli_wrapper.SwarmCLI.join_token" class="md-nav__link">
+    join_token()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.swarm.cli_wrapper.SwarmCLI.leave" class="md-nav__link">
+    leave()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.swarm.cli_wrapper.SwarmCLI.unlock" class="md-nav__link">
+    unlock()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.swarm.cli_wrapper.SwarmCLI.unlock_key" class="md-nav__link">
+    unlock_key()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.swarm.cli_wrapper.SwarmCLI.update" class="md-nav__link">
+    update()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h1 id="python_on_whales.components.swarm.cli_wrapper.SwarmCLI" class="doc doc-heading">
+        <span class="doc doc-object-name doc-class-name">SwarmCLI</span>
+
+
+</h1>
+
+
+  <div class="doc doc-contents first">
+
+
+
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.swarm.cli_wrapper.SwarmCLI.ca" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">ca</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">ca</span><span class="p">(</span><span class="n">ca_certificate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ca_key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">certificate_expiry</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">detach</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">external_ca</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rotate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Get and rotate the root CA</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>ca_certificate</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="python_on_whales.utils.ValidPath">ValidPath</span>]</code>
+          </td>
+          <td><p>Path to the PEM-formatted root CA certificate
+to use for the new cluster</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>ca_key</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="python_on_whales.utils.ValidPath">ValidPath</span>]</code>
+          </td>
+          <td><p>Path to the PEM-formatted root CA key to use
+for the new cluster</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>certificate_expiry</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[int, <span title="datetime.timedelta">timedelta</span>, None]</code>
+          </td>
+          <td><p>Validity period for node certificates</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>detach</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Exit immediately instead of waiting for the root rotation
+to converge. The function will return <code>None</code>.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>external_ca</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Specifications of one or more certificate signing endpoints</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>rotate</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Rotate the swarm CA - if no certificate or key are provided,
+new ones will be generated.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.swarm.cli_wrapper.SwarmCLI.init" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">init</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">init</span><span class="p">(</span><span class="n">advertise_address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">autolock</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">availability</span><span class="o">=</span><span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="n">data_path_address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data_path_port</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">listen_address</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Initialize a Swarm.</p>
+<p>If you need the token to join the new swarm from another node,
+use the <a href="#python_on_whales.components.swarm.cli_wrapper.SwarmCLI.init--join_token"><code>docker.swarm.join_token</code></a> function.</p>
+<p>A example of how to initialize the whole swarm without leaving the manager
+if the manager has ssh access to the workers:</p>
+<pre><code class="language-python">from python_on_whales import docker, DockerClient
+
+worker_docker = DockerClient(host=&quot;ssh://worker_linux_user@worker_hostname&quot;)
+# Here the docker variable is connected to the local daemon
+# worker_docker is a connected to the Docker daemon of the
+# worker through ssh, useful to control it without login to the machine
+# manually.
+docker.swarm.init()
+my_token = docker.swarm.join_token(&quot;worker&quot;)  # you can set manager too
+worker_docker.swarm.join(&quot;manager_hostname:2377&quot;, token=my_token)
+</code></pre>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>advertise_address</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Advertised address (format: <code>&lt;ip|interface&gt;[:port]</code>)</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>autolock</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Enable manager autolocking (requiring an unlock key to start a
+stopped manager)</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>availability</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>Availability of the node ("active"|"pause"|"drain")</p></td>
+          <td>
+                <code>&#39;active&#39;</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>data_path_address</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Address or interface to use for data path
+traffic (format is <code>&lt;ip|interface&gt;</code>)</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.swarm.cli_wrapper.SwarmCLI.join" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">join</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">join</span><span class="p">(</span><span class="n">manager_address</span><span class="p">,</span> <span class="n">advertise_address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">availability</span><span class="o">=</span><span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="n">data_path_address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">listen_address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Joins a swarm</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>manager_address</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>The address of the swarm manager in the format <code>"{ip}:{port}"</code></p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>advertise_address</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Advertised address (format: <ip|interface>[:port])</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>availability</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>Availability of the node
+(<code>"active"</code>|<code>"pause"</code>|<code>"drain"</code>)</p></td>
+          <td>
+                <code>&#39;active&#39;</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>data_path_address</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Address or interface to use for data
+path traffic (format: <ip|interface>)</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>listen-address</code></td>
+          <td>
+          </td>
+          <td><p>Listen address (format: <ip|interface>[:port])
+(default 0.0.0.0:2377)</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>token</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Token for entry into the swarm, will determine if
+the node enters the swarm as a manager or a worker.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.swarm.cli_wrapper.SwarmCLI.join_token" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">join_token</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">join_token</span><span class="p">(</span><span class="n">node_type</span><span class="p">,</span> <span class="n">rotate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Obtains a token to join the swarm</p>
+<p>This token can then be used
+with <code>docker.swarm.join("manager:2377", token=my_token)</code>.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>node_type</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p><code>"manager"</code> or <code>"worker"</code></p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>rotate</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Rotate join token</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.swarm.cli_wrapper.SwarmCLI.leave" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">leave</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">leave</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Leave the swarm</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>force</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Force this node to leave the swarm, ignoring warnings</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.swarm.cli_wrapper.SwarmCLI.unlock" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">unlock</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">unlock</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Unlock a swarm after the <code>--autolock</code> parameter was used and
+the daemon restarted.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>key</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>The key to unlock the swarm. The key can be obtained on any manager
+with <code>docker.swarm.unlock_key()</code>.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.swarm.cli_wrapper.SwarmCLI.unlock_key" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">unlock_key</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">unlock_key</span><span class="p">(</span><span class="n">rotate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Gives you the key needed to unlock the swarm after a manager daemon reboot.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>rotate</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Rotate the unlock key.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.swarm.cli_wrapper.SwarmCLI.update" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">update</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">update</span><span class="p">(</span><span class="n">autolock</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cert_expiry</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dispatcher_heartbeat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">external_ca</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_snapshots</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">snapshot_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">task_history_limit</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Update the swarm configuration</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>autolock</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[bool]</code>
+          </td>
+          <td><p>Change manager autolocking setting</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cert_expiry</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="datetime.timedelta">timedelta</span>]</code>
+          </td>
+          <td><p>Validity period for node certificates, default
+is <code>datetime.timedelta(days=90)</code>. If <code>int</code>, it's a number of seconds.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>dispatcher_heartbeat</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="datetime.timedelta">timedelta</span>]</code>
+          </td>
+          <td><p>Dispatcher heartbeat period.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>external_ca</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Specifications of one or more certificate signing endpoints</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>max_snapshots</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>Number of additional Raft snapshots to retain</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>snapshot_interval</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>Number of log entries between Raft snapshots (default 10000)</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>task_history_limit</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>Task history retention limit (default 5)</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,4209 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Python on whales docs">
+      
+      
+      
+      
+        <link rel="prev" href="../config/">
+      
+      
+        <link rel="next" href="../context/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.14">
+    
+    
+      
+        <title>docker container - Python on whales</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.85bb2934.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Python on whales" class="md-header__button md-logo" aria-label="Python on whales" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python on whales
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              docker container
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gabrieldemarmiesse/python-on-whales" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Python on whales" class="md-nav__button md-logo" aria-label="Python on whales" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Python on whales
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gabrieldemarmiesse/python-on-whales" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_client/" class="md-nav__link">
+        Docker client
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Sub-commands
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Sub-commands
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../buildx/" class="md-nav__link">
+        docker buildx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compose/" class="md-nav__link">
+        docker compose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/" class="md-nav__link">
+        docker config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          docker container
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        docker container
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.attach" class="md-nav__link">
+    attach()
+  </a>
+  
+    <nav class="md-nav" aria-label="attach()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.attach--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.commit" class="md-nav__link">
+    commit()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.copy" class="md-nav__link">
+    copy()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.create" class="md-nav__link">
+    create()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.diff" class="md-nav__link">
+    diff()
+  </a>
+  
+    <nav class="md-nav" aria-label="diff()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.diff--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.execute" class="md-nav__link">
+    execute()
+  </a>
+  
+    <nav class="md-nav" aria-label="execute()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.execute--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.exists" class="md-nav__link">
+    exists()
+  </a>
+  
+    <nav class="md-nav" aria-label="exists()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.exists--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.export" class="md-nav__link">
+    export()
+  </a>
+  
+    <nav class="md-nav" aria-label="export()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.export--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.inspect" class="md-nav__link">
+    inspect()
+  </a>
+  
+    <nav class="md-nav" aria-label="inspect()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.inspect--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.kill" class="md-nav__link">
+    kill()
+  </a>
+  
+    <nav class="md-nav" aria-label="kill()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.kill--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.list" class="md-nav__link">
+    list()
+  </a>
+  
+    <nav class="md-nav" aria-label="list()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.list--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.logs" class="md-nav__link">
+    logs()
+  </a>
+  
+    <nav class="md-nav" aria-label="logs()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.logs--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.logs--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.pause" class="md-nav__link">
+    pause()
+  </a>
+  
+    <nav class="md-nav" aria-label="pause()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.pause--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.prune" class="md-nav__link">
+    prune()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.remove" class="md-nav__link">
+    remove()
+  </a>
+  
+    <nav class="md-nav" aria-label="remove()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.remove--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.rename" class="md-nav__link">
+    rename()
+  </a>
+  
+    <nav class="md-nav" aria-label="rename()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.rename--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.restart" class="md-nav__link">
+    restart()
+  </a>
+  
+    <nav class="md-nav" aria-label="restart()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.restart--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.run" class="md-nav__link">
+    run()
+  </a>
+  
+    <nav class="md-nav" aria-label="run()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.run--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.start" class="md-nav__link">
+    start()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.stats" class="md-nav__link">
+    stats()
+  </a>
+  
+    <nav class="md-nav" aria-label="stats()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.stats--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.stop" class="md-nav__link">
+    stop()
+  </a>
+  
+    <nav class="md-nav" aria-label="stop()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.stop--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.top" class="md-nav__link">
+    top()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.unpause" class="md-nav__link">
+    unpause()
+  </a>
+  
+    <nav class="md-nav" aria-label="unpause()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.unpause--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.update" class="md-nav__link">
+    update()
+  </a>
+  
+    <nav class="md-nav" aria-label="update()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.update--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.wait" class="md-nav__link">
+    wait()
+  </a>
+  
+    <nav class="md-nav" aria-label="wait()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.wait--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.wait--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../context/" class="md-nav__link">
+        docker context
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image/" class="md-nav__link">
+        docker image
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manifest/" class="md-nav__link">
+        docker manifest
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        docker network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../node/" class="md-nav__link">
+        docker node
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plugin/" class="md-nav__link">
+        docker plugin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secret/" class="md-nav__link">
+        docker secret
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../service/" class="md-nav__link">
+        docker service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stack/" class="md-nav__link">
+        docker stack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../swarm/" class="md-nav__link">
+        docker swarm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system/" class="md-nav__link">
+        docker system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task/" class="md-nav__link">
+        docker task
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trust/" class="md-nav__link">
+        docker trust
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../volume/" class="md-nav__link">
+        docker volume
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Docker objects
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Docker objects
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/builders/" class="md-nav__link">
+        Builders
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/configs/" class="md-nav__link">
+        Configs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/containers/" class="md-nav__link">
+        Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/images/" class="md-nav__link">
+        Images
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/networks/" class="md-nav__link">
+        Networks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/nodes/" class="md-nav__link">
+        Nodes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/plugins/" class="md-nav__link">
+        Plugins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/secrets/" class="md-nav__link">
+        Secrets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/services/" class="md-nav__link">
+        Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/stacks/" class="md-nav__link">
+        Stacks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/tasks/" class="md-nav__link">
+        Tasks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_objects/volumes/" class="md-nav__link">
+        Volumes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          User guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          User guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_guide/docker_run/" class="md-nav__link">
+        docker.run() guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_guide/generic_resources/" class="md-nav__link">
+        Swarm generic resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_guide/running_python_on_whales_inside_a_container/" class="md-nav__link">
+        Running python-on-whales inside a container
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_guide/exceptions/" class="md-nav__link">
+        dealing with exceptions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.attach" class="md-nav__link">
+    attach()
+  </a>
+  
+    <nav class="md-nav" aria-label="attach()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.attach--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.commit" class="md-nav__link">
+    commit()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.copy" class="md-nav__link">
+    copy()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.create" class="md-nav__link">
+    create()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.diff" class="md-nav__link">
+    diff()
+  </a>
+  
+    <nav class="md-nav" aria-label="diff()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.diff--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.execute" class="md-nav__link">
+    execute()
+  </a>
+  
+    <nav class="md-nav" aria-label="execute()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.execute--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.exists" class="md-nav__link">
+    exists()
+  </a>
+  
+    <nav class="md-nav" aria-label="exists()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.exists--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.export" class="md-nav__link">
+    export()
+  </a>
+  
+    <nav class="md-nav" aria-label="export()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.export--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.inspect" class="md-nav__link">
+    inspect()
+  </a>
+  
+    <nav class="md-nav" aria-label="inspect()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.inspect--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.kill" class="md-nav__link">
+    kill()
+  </a>
+  
+    <nav class="md-nav" aria-label="kill()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.kill--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.list" class="md-nav__link">
+    list()
+  </a>
+  
+    <nav class="md-nav" aria-label="list()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.list--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.logs" class="md-nav__link">
+    logs()
+  </a>
+  
+    <nav class="md-nav" aria-label="logs()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.logs--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.logs--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.pause" class="md-nav__link">
+    pause()
+  </a>
+  
+    <nav class="md-nav" aria-label="pause()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.pause--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.prune" class="md-nav__link">
+    prune()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.remove" class="md-nav__link">
+    remove()
+  </a>
+  
+    <nav class="md-nav" aria-label="remove()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.remove--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.rename" class="md-nav__link">
+    rename()
+  </a>
+  
+    <nav class="md-nav" aria-label="rename()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.rename--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.restart" class="md-nav__link">
+    restart()
+  </a>
+  
+    <nav class="md-nav" aria-label="restart()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.restart--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.run" class="md-nav__link">
+    run()
+  </a>
+  
+    <nav class="md-nav" aria-label="run()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.run--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.start" class="md-nav__link">
+    start()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.stats" class="md-nav__link">
+    stats()
+  </a>
+  
+    <nav class="md-nav" aria-label="stats()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.stats--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.stop" class="md-nav__link">
+    stop()
+  </a>
+  
+    <nav class="md-nav" aria-label="stop()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.stop--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.top" class="md-nav__link">
+    top()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.unpause" class="md-nav__link">
+    unpause()
+  </a>
+  
+    <nav class="md-nav" aria-label="unpause()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.unpause--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.update" class="md-nav__link">
+    update()
+  </a>
+  
+    <nav class="md-nav" aria-label="update()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.update--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.wait" class="md-nav__link">
+    wait()
+  </a>
+  
+    <nav class="md-nav" aria-label="wait()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.wait--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.wait--raises" class="md-nav__link">
+    Raises
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h1 id="python_on_whales.components.container.cli_wrapper.ContainerCLI" class="doc doc-heading">
+        <span class="doc doc-object-name doc-class-name">ContainerCLI</span>
+
+
+</h1>
+
+
+  <div class="doc doc-contents first">
+
+
+
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.attach" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">attach</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">attach</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">detach_keys</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stdin</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sig_proxy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Attach local standard input, output, and error streams to a running container</p>
+<p>Alias: <code>docker.attach(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>container</code></td>
+          <td>
+                <code><span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span></code>
+          </td>
+          <td><p>The running container to attach to</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>detach_keys</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Override the key sequence for detaching a container</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>stdin</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Attach STDIN</p></td>
+          <td>
+                <code>True</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>sig_proxy</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Proxy all received signals to the process (default true)</p></td>
+          <td>
+                <code>True</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.attach--raises">Raises</h3>
+<pre><code>`python_on_whales.exceptions.NoSuchContainer` if the container does not exists.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.commit" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">commit</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">commit</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">author</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pause</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Create a new image from a container's changes</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>container</code></td>
+          <td>
+                <code><span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span></code>
+          </td>
+          <td><p>The container to create the image from</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>tag</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>tag to apply on the image produced</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>author</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Author (e.g., "John Hannibal Smith <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#97;&#110;&#110;&#105;&#98;&#97;&#108;&#64;&#97;&#45;&#116;&#101;&#97;&#109;&#46;&#99;&#111;&#109;">&#104;&#97;&#110;&#110;&#105;&#98;&#97;&#108;&#64;&#97;&#45;&#116;&#101;&#97;&#109;&#46;&#99;&#111;&#109;</a>")</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>message</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Commit message</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>pause</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Pause container during commit</p></td>
+          <td>
+                <code>True</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.copy" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">copy</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">copy</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">destination</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Copy files/folders between a container and the local filesystem</p>
+<p>Alias: <code>docker.copy(...)</code></p>
+<pre><code class="language-python">from python_on_whales import docker
+
+docker.run(&quot;ubuntu&quot;, [&quot;sleep&quot;, &quot;infinity&quot;], name=&quot;dodo&quot;, remove=True, detach=True)
+
+docker.copy(&quot;/tmp/my_local_file.txt&quot;, (&quot;dodo&quot;, &quot;/path/in/container.txt&quot;))
+docker.copy((&quot;dodo&quot;, &quot;/path/in/container.txt&quot;), &quot;/tmp/my_local_file2.txt&quot;)
+</code></pre>
+<p>Doesn't yet support sending or receiving iterators of Python bytes.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>source</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<span title="python_on_whales.utils.ValidPath">ValidPath</span>, <span title="python_on_whales.components.container.cli_wrapper.ContainerPath">ContainerPath</span>]</code>
+          </td>
+          <td><p>Local path or tuple. When using a tuple, the first element
+of the tuple is the container, the second element is the path in
+the container. ex: <code>source=("my-container", "/usr/bin/something")</code>.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>destination</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<span title="python_on_whales.utils.ValidPath">ValidPath</span>, <span title="python_on_whales.components.container.cli_wrapper.ContainerPath">ContainerPath</span>]</code>
+          </td>
+          <td><p>Local path or tuple. When using a tuple, the first element
+of the tuple is the container, the second element is the path in
+the container. ex: <code>source=("my-container", "/usr/bin/something")</code>.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.create" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">create</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">create</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="p">[],</span> <span class="o">*</span><span class="p">,</span> <span class="n">add_hosts</span><span class="o">=</span><span class="p">[],</span> <span class="n">blkio_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">blkio_weight_device</span><span class="o">=</span><span class="p">[],</span> <span class="n">cap_add</span><span class="o">=</span><span class="p">[],</span> <span class="n">cap_drop</span><span class="o">=</span><span class="p">[],</span> <span class="n">cgroup_parent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cgroupns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cidfile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpu_period</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpu_quota</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpu_rt_period</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpu_rt_runtime</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpu_shares</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpus</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpuset_cpus</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpuset_mems</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">detach</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">devices</span><span class="o">=</span><span class="p">[],</span> <span class="n">device_cgroup_rules</span><span class="o">=</span><span class="p">[],</span> <span class="n">device_read_bps</span><span class="o">=</span><span class="p">[],</span> <span class="n">device_read_iops</span><span class="o">=</span><span class="p">[],</span> <span class="n">device_write_bps</span><span class="o">=</span><span class="p">[],</span> <span class="n">device_write_iops</span><span class="o">=</span><span class="p">[],</span> <span class="n">content_trust</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dns</span><span class="o">=</span><span class="p">[],</span> <span class="n">dns_options</span><span class="o">=</span><span class="p">[],</span> <span class="n">dns_search</span><span class="o">=</span><span class="p">[],</span> <span class="n">domainname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">entrypoint</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">envs</span><span class="o">=</span><span class="p">{},</span> <span class="n">env_files</span><span class="o">=</span><span class="p">[],</span> <span class="n">expose</span><span class="o">=</span><span class="p">[],</span> <span class="n">gpus</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">groups_add</span><span class="o">=</span><span class="p">[],</span> <span class="n">healthcheck</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">health_cmd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">health_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">health_retries</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">health_start_period</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">health_timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hostname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ip</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ip6</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ipc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">isolation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kernel_memory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">{},</span> <span class="n">label_files</span><span class="o">=</span><span class="p">[],</span> <span class="n">link</span><span class="o">=</span><span class="p">[],</span> <span class="n">link_local_ip</span><span class="o">=</span><span class="p">[],</span> <span class="n">log_driver</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">log_options</span><span class="o">=</span><span class="p">[],</span> <span class="n">mac_address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">memory_reservation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">memory_swap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">memory_swappiness</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mounts</span><span class="o">=</span><span class="p">[],</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">networks</span><span class="o">=</span><span class="p">[],</span> <span class="n">network_aliases</span><span class="o">=</span><span class="p">[],</span> <span class="n">oom_kill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">oom_score_adj</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pids_limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">platform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">privileged</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">publish</span><span class="o">=</span><span class="p">[],</span> <span class="n">publish_all</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pull</span><span class="o">=</span><span class="s1">&#39;missing&#39;</span><span class="p">,</span> <span class="n">read_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">restart</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">remove</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">runtime</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">security_options</span><span class="o">=</span><span class="p">[],</span> <span class="n">shm_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sig_proxy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">stop_signal</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stop_timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="p">[],</span> <span class="n">sysctl</span><span class="o">=</span><span class="p">{},</span> <span class="n">tmpfs</span><span class="o">=</span><span class="p">[],</span> <span class="n">ulimit</span><span class="o">=</span><span class="p">[],</span> <span class="n">user</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">userns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">volumes</span><span class="o">=</span><span class="p">[],</span> <span class="n">volume_driver</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">volumes_from</span><span class="o">=</span><span class="p">[],</span> <span class="n">workdir</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Creates a container, but does not start it.</p>
+<p>Alias: <code>docker.create(...)</code></p>
+<p>Start it then with the <code>.start()</code> method.</p>
+<p>It might be useful if you want to delay the start of a container,
+to do some preparations beforehand. For example, it's common to do this
+workflow: <code>docker create</code> -&gt; <code>docker cp</code> -&gt; <code>docker start</code> to put files
+in the container before starting.</p>
+<p>There is no <code>detach</code> argument since it's a runtime option.</p>
+<p>The arguments are the same as <a href="#python_on_whales.components.container.cli_wrapper.ContainerCLI.create--run"><code>docker.run</code></a>.</p>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.diff" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">diff</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">diff</span><span class="p">(</span><span class="n">container</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>List all the files modified, added or deleted since the container started.</p>
+<p>Alias: <code>docker.diff(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>container</code></td>
+          <td>
+                <code><span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span></code>
+          </td>
+          <td><p>The container to inspect</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.diff--returns">Returns</h3>
+<pre><code>`Dict[str, str]` Something like
+`{"/some_path": "A", "/some_file": "M", "/tmp": "D"}` for example.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.execute" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">execute</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">execute</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">detach</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">envs</span><span class="o">=</span><span class="p">{},</span> <span class="n">env_files</span><span class="o">=</span><span class="p">[],</span> <span class="n">interactive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">privileged</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tty</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">workdir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Execute a command inside a container</p>
+<p>Alias: <code>docker.execute(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>container</code></td>
+          <td>
+                <code><span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span></code>
+          </td>
+          <td><p>The container to execute the command in.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>command</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[str, <span title="typing.List">List</span>[str]]</code>
+          </td>
+          <td><p>The command to execute.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>detach</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>if <code>True</code>, returns immediately with <code>None</code>. If <code>False</code>,
+returns the command stdout as string.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>envs</code></td>
+          <td>
+                <code><span title="typing.Dict">Dict</span>[str, str]</code>
+          </td>
+          <td><p>Set environment variables</p></td>
+          <td>
+                <code>{}</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>env_files</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<span title="python_on_whales.utils.ValidPath">ValidPath</span>, <span title="typing.List">List</span>[<span title="python_on_whales.utils.ValidPath">ValidPath</span>]]</code>
+          </td>
+          <td><p>Read one or more files of environment variables</p></td>
+          <td>
+                <code>[]</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>interactive</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Leave stdin open during the duration of the process
+to allow communication with the parent process.
+Currently only works with <code>tty=True</code> for interactive use
+on the terminal.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>privileged</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Give extended privileges to the container.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>tty</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Allocate a pseudo-TTY. Allow the process to access your terminal
+to write on it.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>user</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Username or UID, format: <code>"&lt;name|uid&gt;[:&lt;group|gid&gt;]"</code></p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>workdir</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="python_on_whales.utils.ValidPath">ValidPath</span>]</code>
+          </td>
+          <td><p>Working directory inside the container</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>stream</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Similar to <code>docker.run(..., stream=True)</code>.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><span title="typing.Union">Union</span>[None, str, <span title="typing.Iterable">Iterable</span>[<span title="typing.Tuple">Tuple</span>[str, bytes]]]</code>
+          </td>
+          <td><p>Optional[str]</p></td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.execute--raises">Raises</h3>
+<pre><code>`python_on_whales.exceptions.NoSuchContainer` if the container does not exists.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.exists" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">exists</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">exists</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Returns <code>True</code> if the container exists. <code>False</code> otherwise.</p>
+<p>It's just calling <code>docker.container.inspect(...)</code> and verifies that it doesn't throw
+ a <code>python_on_whales.exceptions.NoSuchContainer</code>.</p>
+<h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.exists--returns">Returns</h3>
+<pre><code>A `bool`
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.export" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">export</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">export</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Export a container's filesystem as a tar archive</p>
+<p>Alias: <code>docker.export(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>container</code></td>
+          <td>
+                <code><span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span></code>
+          </td>
+          <td><p>The container to export.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>output</code></td>
+          <td>
+                <code><span title="python_on_whales.utils.ValidPath">ValidPath</span></code>
+          </td>
+          <td><p>The path of the output tar archive. Returning a generator of bytes
+is not yet implemented.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.export--raises">Raises</h3>
+<pre><code>`python_on_whales.exceptions.NoSuchContainer` if the container does not exists.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.inspect" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">inspect</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">inspect</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Returns a container object from a name or ID.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>reference</code></td>
+          <td>
+          </td>
+          <td><p>A container name or ID, or a list of container names
+and/or IDs</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="python_on_whales.components.container.cli_wrapper.Container" href="../../docker_objects/containers/#python_on_whales.Container">Container</a>, <span title="typing.List">List</span>[<a class="autorefs autorefs-internal" title="python_on_whales.components.container.cli_wrapper.Container" href="../../docker_objects/containers/#python_on_whales.Container">Container</a>]]</code>
+          </td>
+          <td><p>A <code>python_on_whales.Container</code> object or a list of those</p></td>
+        </tr>
+        <tr>
+          <td>
+                <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="python_on_whales.components.container.cli_wrapper.Container" href="../../docker_objects/containers/#python_on_whales.Container">Container</a>, <span title="typing.List">List</span>[<a class="autorefs autorefs-internal" title="python_on_whales.components.container.cli_wrapper.Container" href="../../docker_objects/containers/#python_on_whales.Container">Container</a>]]</code>
+          </td>
+          <td><p>if a list of IDs was passed as input.</p></td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.inspect--raises">Raises</h3>
+<pre><code>`python_on_whales.exceptions.NoSuchContainer` if the container does not exists.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.kill" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">kill</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">kill</span><span class="p">(</span><span class="n">containers</span><span class="p">,</span> <span class="n">signal</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Kill a container.</p>
+<p>Alias: <code>docker.kill(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>containers</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span>, <span title="typing.List">List</span>[<span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span>]]</code>
+          </td>
+          <td><p>One or more containers to kill</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>signal</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[int, str]]</code>
+          </td>
+          <td><p>The signal to send the container</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.kill--raises">Raises</h3>
+<pre><code>`python_on_whales.exceptions.NoSuchContainer` if the container does not exists.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.list" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">list</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">list</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">{})</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>List the containers on the host.</p>
+<p>Alias: <code>docker.ps(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>all</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>If <code>True</code>, also returns containers that are not running.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.list--returns">Returns</h3>
+<pre><code>A `List[python_on_whales.Container]`
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.logs" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">logs</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">logs</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">details</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">since</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tail</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timestamps</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">until</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">follow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Returns the logs of a container as a string or an iterator.</p>
+<p>Alias: <code>docker.logs(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>container</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="python_on_whales.components.container.cli_wrapper.Container" href="../../docker_objects/containers/#python_on_whales.Container">Container</a>, str]</code>
+          </td>
+          <td><p>The container to get the logs of</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>details</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Show extra details provided to logs</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>since</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[None, <span title="datetime.datetime">datetime</span>, <span title="datetime.timedelta">timedelta</span>]</code>
+          </td>
+          <td><p>Use a datetime or timedelta to specify the lower
+date limit for the logs.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>tail</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>Number of lines to show from the end of the logs (default all)</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>timestamps</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Put timestamps next to lines.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>until</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[None, <span title="datetime.datetime">datetime</span>, <span title="datetime.timedelta">timedelta</span>]</code>
+          </td>
+          <td><p>Use a datetime or a timedelta to specify the upper date
+limit for the logs.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>follow</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>If <code>False</code> (the default), the logs returned are the logs up to the time
+of the function call. If <code>True</code>, the logs of the container up to the time the
+container stopped are displayed. Which means that if the container isn't stopped
+yet, the function will continue until the container is stopped.
+Which is why it is advised to use the <code>stream</code> option if you use the <code>follow</code> option.
+Without <code>stream</code>, only a <code>str</code> will be returned, possibly much later in the
+future. With <code>stream</code>, you'll be able to read the logs in real time.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>stream</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Similar to the <code>stream</code> argument of <code>docker.run</code>.
+This function will then returns and iterator that will yield a
+tuple <code>(source, content)</code> with <code>source</code> being <code>"stderr"</code> or
+<code>"stdout"</code>. <code>content</code> is the content of the line as bytes.
+Take a look at <a href="https://gabrieldemarmiesse.github.io/python-on-whales/user_guide/docker_run/#stream-the-output">the user guide</a>
+to have an example of the output.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.logs--returns">Returns</h3>
+<pre><code>`str` if `stream=False` (the default), `Iterable[Tuple[str, bytes]]`
+if `stream=True`.
+</code></pre>
+<h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.logs--raises">Raises</h3>
+<pre><code>`python_on_whales.exceptions.NoSuchContainer` if the container does not exists.
+</code></pre>
+<p>If you are a bit confused about <code>follow</code> and <code>stream</code>, here are some use cases.</p>
+<ul>
+<li>If you want to have the logs up to this point as a <code>str</code>, don't use those args.</li>
+<li>If you want to stream the output in real time, use <code>follow=True, stream=True</code></li>
+<li>If you want the logs up to this point but you don't want to fit all the logs
+in memory because they are too big, use <code>stream=True</code>.</li>
+</ul>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.pause" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">pause</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pause</span><span class="p">(</span><span class="n">containers</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Pauses one or more containers</p>
+<p>Alias: <code>docker.pause(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>containers</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span>, <span title="typing.List">List</span>[<span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span>]]</code>
+          </td>
+          <td><p>One or more containers to pause</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.pause--raises">Raises</h3>
+<pre><code>`python_on_whales.exceptions.NoSuchContainer` if the container does not exists.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.prune" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">prune</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">prune</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="p">{})</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Remove containers that are not running.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>filters</code></td>
+          <td>
+                <code><span title="typing.Dict">Dict</span>[str, str]</code>
+          </td>
+          <td><p>Filters as strings or list of strings</p></td>
+          <td>
+                <code>{}</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.remove" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">remove</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">remove</span><span class="p">(</span><span class="n">containers</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">volumes</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Removes a container</p>
+<p>Alias: <code>docker.remove(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>containers</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="python_on_whales.components.container.cli_wrapper.Container" href="../../docker_objects/containers/#python_on_whales.Container">Container</a>, str, <span title="typing.List">List</span>[<span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="python_on_whales.components.container.cli_wrapper.Container" href="../../docker_objects/containers/#python_on_whales.Container">Container</a>, str]]]</code>
+          </td>
+          <td><p>One or more containers.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>force</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Force the removal of a running container (uses SIGKILL)</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>volumes</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Remove anonymous volumes associated with the container</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.remove--raises">Raises</h3>
+<pre><code>`python_on_whales.exceptions.NoSuchContainer` if the container does not exists.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.rename" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">rename</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">rename</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">new_name</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Changes the name of a container.</p>
+<p>Alias: <code>docker.rename(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>container</code></td>
+          <td>
+                <code><span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span></code>
+          </td>
+          <td><p>The container to rename</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>new_name</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>The new name of the container.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.rename--raises">Raises</h3>
+<pre><code>`python_on_whales.exceptions.NoSuchContainer` if the container does not exists.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.restart" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">restart</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">restart</span><span class="p">(</span><span class="n">containers</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Restarts one or more container.</p>
+<p>Alias: <code>docker.restart(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>containers</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span>, <span title="typing.List">List</span>[<span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span>]]</code>
+          </td>
+          <td><p>One or more containers to restart</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>time</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[int, <span title="datetime.timedelta">timedelta</span>]]</code>
+          </td>
+          <td><p>Amount of to wait for stop before killing the container (default 10s).
+If <code>int</code>, the unit is seconds.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.restart--raises">Raises</h3>
+<pre><code>`python_on_whales.exceptions.NoSuchContainer` if the container does not exists.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.run" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">run</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">run</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="p">[],</span> <span class="o">*</span><span class="p">,</span> <span class="n">add_hosts</span><span class="o">=</span><span class="p">[],</span> <span class="n">blkio_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">blkio_weight_device</span><span class="o">=</span><span class="p">[],</span> <span class="n">cap_add</span><span class="o">=</span><span class="p">[],</span> <span class="n">cap_drop</span><span class="o">=</span><span class="p">[],</span> <span class="n">cgroup_parent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cgroupns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cidfile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpu_period</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpu_quota</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpu_rt_period</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpu_rt_runtime</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpu_shares</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpus</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpuset_cpus</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpuset_mems</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">detach</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">devices</span><span class="o">=</span><span class="p">[],</span> <span class="n">device_cgroup_rules</span><span class="o">=</span><span class="p">[],</span> <span class="n">device_read_bps</span><span class="o">=</span><span class="p">[],</span> <span class="n">device_read_iops</span><span class="o">=</span><span class="p">[],</span> <span class="n">device_write_bps</span><span class="o">=</span><span class="p">[],</span> <span class="n">device_write_iops</span><span class="o">=</span><span class="p">[],</span> <span class="n">content_trust</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dns</span><span class="o">=</span><span class="p">[],</span> <span class="n">dns_options</span><span class="o">=</span><span class="p">[],</span> <span class="n">dns_search</span><span class="o">=</span><span class="p">[],</span> <span class="n">domainname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">entrypoint</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">envs</span><span class="o">=</span><span class="p">{},</span> <span class="n">env_files</span><span class="o">=</span><span class="p">[],</span> <span class="n">expose</span><span class="o">=</span><span class="p">[],</span> <span class="n">gpus</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">groups_add</span><span class="o">=</span><span class="p">[],</span> <span class="n">healthcheck</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">health_cmd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">health_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">health_retries</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">health_start_period</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">health_timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hostname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">interactive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ip</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ip6</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ipc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">isolation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kernel_memory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">{},</span> <span class="n">label_files</span><span class="o">=</span><span class="p">[],</span> <span class="n">link</span><span class="o">=</span><span class="p">[],</span> <span class="n">link_local_ip</span><span class="o">=</span><span class="p">[],</span> <span class="n">log_driver</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">log_options</span><span class="o">=</span><span class="p">[],</span> <span class="n">mac_address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">memory_reservation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">memory_swap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">memory_swappiness</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mounts</span><span class="o">=</span><span class="p">[],</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">networks</span><span class="o">=</span><span class="p">[],</span> <span class="n">network_aliases</span><span class="o">=</span><span class="p">[],</span> <span class="n">oom_kill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">oom_score_adj</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pids_limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">platform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">privileged</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">publish</span><span class="o">=</span><span class="p">[],</span> <span class="n">publish_all</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pull</span><span class="o">=</span><span class="s1">&#39;missing&#39;</span><span class="p">,</span> <span class="n">read_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">restart</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">remove</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">runtime</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">security_options</span><span class="o">=</span><span class="p">[],</span> <span class="n">shm_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sig_proxy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">stop_signal</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stop_timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="p">[],</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sysctl</span><span class="o">=</span><span class="p">{},</span> <span class="n">tmpfs</span><span class="o">=</span><span class="p">[],</span> <span class="n">tty</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ulimit</span><span class="o">=</span><span class="p">[],</span> <span class="n">user</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">userns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">volumes</span><span class="o">=</span><span class="p">[],</span> <span class="n">volume_driver</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">volumes_from</span><span class="o">=</span><span class="p">[],</span> <span class="n">workdir</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Runs a container</p>
+<p>You can use <code>docker.run</code> or <code>docker.container.run</code> to call this function.</p>
+<p>For a deeper dive into the arguments and what they do, visit
+<a href="https://docs.docker.com/engine/reference/run/">https://docs.docker.com/engine/reference/run/</a></p>
+<p>If you want to know exactly how to call <code>docker.run()</code> depending on your
+use case (detach, stream...), take a look at
+the <a href="../../user_guide/docker_run/"><code>docker.run()</code> guide</a>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; from python_on_whales import docker
+&gt;&gt;&gt; returned_string = docker.run(&quot;hello-world&quot;)
+&gt;&gt;&gt; print(returned_string)
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+</code></pre>
+<pre><code class="language-python">&gt;&gt;&gt; from python_on_whales import docker
+&gt;&gt;&gt; result_string = docker.run(&quot;ubuntu&quot;, [&quot;ls&quot;, &quot;/host&quot;], volumes=[(&quot;/&quot;, &quot;/host&quot;, &quot;ro&quot;)])
+&gt;&gt;&gt; print(result_string)
+bin
+boot
+dev
+etc
+home
+init
+lib
+lib64
+lost+found
+media
+mnt
+opt
+proc
+projects
+root
+run
+sbin
+snap
+srv
+sys
+tmp
+usr
+var
+</code></pre>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>image</code></td>
+          <td>
+                <code><span title="python_on_whales.components.volume.cli_wrapper">python_on_whales</span>.<span title="python_on_whales.components.volume.cli_wrapper.components">components</span>.<span title="python_on_whales.components.volume.cli_wrapper.components.image">image</span>.<span title="python_on_whales.components.volume.cli_wrapper.components.image.cli_wrapper">cli_wrapper</span>.<span title="python_on_whales.components.volume.cli_wrapper.components.image.cli_wrapper.ValidImage">ValidImage</span></code>
+          </td>
+          <td><p>The docker image to use for the container</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>command</code></td>
+          <td>
+                <code><span title="typing.List">List</span>[str]</code>
+          </td>
+          <td><p>List of arguments to provide to the container.</p></td>
+          <td>
+                <code>[]</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>add_hosts</code></td>
+          <td>
+                <code><span title="typing.List">List</span>[<span title="typing.Tuple">Tuple</span>[str, str]]</code>
+          </td>
+          <td><p>hosts to add in the format of a tuple. For example,
+<code>add_hosts=[("my_host_1", "192.168.30.31"), ("host2", "192.168.80.81")]</code></p></td>
+          <td>
+                <code>[]</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>blkio_weight</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>Block IO (relative weight), between 10 and 1000,
+or 0 to disable (default 0)</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cgroupns</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Cgroup namespace mode to use, one of 'host' or 'private'.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cpu_period</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>Limit CPU CFS (Completely Fair Scheduler) period</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cpu_quota</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>Limit CPU CFS (Completely Fair Scheduler) quota</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cpu_rt_period</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>Limit CPU real-time period in microseconds</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cpu_rt_runtime</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>Limit CPU real-time runtime in microseconds</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cpu_shares</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>CPU shares (relative weight)</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cpus</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[float]</code>
+          </td>
+          <td><p>The maximal amount of cpu the container can use.
+<code>1</code> means one cpu core.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cpuset_cpus</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[int]]</code>
+          </td>
+          <td><p>CPUs in which to allow execution. Must be given as a list.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cpuset_mems</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[int]]</code>
+          </td>
+          <td><p>MEMs in which to allow execution. Must be given as a list.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>detach</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>If <code>False</code>, returns the ouput of the container as a string.
+If <code>True</code>, returns a <code>python_on_whales.Container</code> object.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>dns_search</code></td>
+          <td>
+                <code><span title="typing.List">List</span>[str]</code>
+          </td>
+          <td><p>Set custom DNS search domains</p></td>
+          <td>
+                <code>[]</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>domainname</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Container NIS domain name</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>entrypoint</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Overwrite the default ENTRYPOINT of the image</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>envs</code></td>
+          <td>
+                <code><span title="typing.Dict">Dict</span>[str, str]</code>
+          </td>
+          <td><p>Environment variables as a <code>dict</code>.
+For example: <code>{"OMP_NUM_THREADS": 3}</code></p></td>
+          <td>
+                <code>{}</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>env_files</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<span title="python_on_whales.utils.ValidPath">ValidPath</span>, <span title="typing.List">List</span>[<span title="python_on_whales.utils.ValidPath">ValidPath</span>]]</code>
+          </td>
+          <td><p>One or a list of env files.</p></td>
+          <td>
+                <code>[]</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>gpus</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[int, str, None]</code>
+          </td>
+          <td><p>For this to work, you need the
+<a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#install-guide">Nvidia container runtime</a>
+The value needed is a <code>str</code> or <code>int</code>. Some examples of valid argument
+are <code>"all"</code> or <code>"device=GPU-3a23c669-1f69-c64e-cf85-44e9b07e7a2a"</code> or
+<code>"device=0,2"</code>. If you want 3 gpus, just write <code>gpus=3</code>.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>hostname</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Container host name</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>interactive</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Leave stdin open during the duration of the process
+to allow communication with the parent process.
+Currently only works with <code>tty=True</code> for interactive use
+on the terminal.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>ip</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>IPv4 address (e.g., 172.30.100.104)</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>ip6</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>IPv6 address (e.g., 2001:db8::33)</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>ipc</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>IPC mode to use</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>isolation</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Container isolation technology</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>kernel_memory</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[int, str, None]</code>
+          </td>
+          <td><p>Kernel memory limit. <code>int</code> represents the number of bytes,
+but you can use <code>"4k"</code> or <code>2g</code> for example.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>labels</code></td>
+          <td>
+                <code><span title="typing.Dict">Dict</span>[str, str]</code>
+          </td>
+          <td><p>Set meta data on a container. The labels can be used later when filtering
+containers with <code>docker.ps(filters='...')</code>. The labels can also be found on
+each container with the attribute <code>my_container.config.labels</code>.</p></td>
+          <td>
+                <code>{}</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>log_driver</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Logging driver for the container</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>mac_address</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Container MAC address (e.g., <code>"92:d0:c6:0a:29:33"</code>)</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>memory</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[int, str, None]</code>
+          </td>
+          <td><p>Memory limit, valid values are <code>1024</code> (ints are bytes) or
+<code>"43m"</code> or <code>"6g"</code>.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>memory_reservation</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[int, str, None]</code>
+          </td>
+          <td><p>Memory soft limit</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>memory_swap</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[int, str, None]</code>
+          </td>
+          <td><p>Swap limit equal to memory plus swap: '-1'
+to enable unlimited swap.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>memory_swappiness</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>Tune container memory swappiness (0 to 100) (default -1)</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>name</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>The container name. If not provided, one is automatically genrated for
+you.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>healthcheck</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Set to <code>False</code> to disable container periodic healthcheck.</p></td>
+          <td>
+                <code>True</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>oom_kill</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Set to <code>False</code> to disable the OOM killer for this container.</p></td>
+          <td>
+                <code>True</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>pid</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>PID namespace to use</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>pids_limit</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>Tune container pids limit (set <code>-1</code> for unlimited)</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>platform</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Set platform if server is multi-platform capable.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>privileged</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Give extended privileges to this container.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>publish</code></td>
+          <td>
+                <code><span title="typing.List">List</span>[<span title="python_on_whales.components.container.cli_wrapper.ValidPortMapping">ValidPortMapping</span>]</code>
+          </td>
+          <td><p>Ports to publish, same as the <code>-p</code> argument in the Docker CLI.
+example are <code>[(8000, 7000) , ("127.0.0.1:3000", 2000)]</code> or
+<code>[("127.0.0.1:3000", 2000, "udp")]</code>. You can also use a single entry in
+the tuple to signify that you want a random free port on the host. For example:
+<code>publish=[(80,)]</code>.</p></td>
+          <td>
+                <code>[]</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>publish_all</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Publish all exposed ports to random ports.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>pull</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>Pull image before running ("always"|"missing"|"never") (default "missing").</p></td>
+          <td>
+                <code>&#39;missing&#39;</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>read_only</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Mount the container's root filesystem as read only.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>restart</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Restart policy to apply when a container exits (default "no")</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>remove</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Automatically remove the container when it exits.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>runtime</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Runtime to use for this container.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>security_options</code></td>
+          <td>
+                <code><span title="typing.List">List</span>[str]</code>
+          </td>
+          <td><p>Security options</p></td>
+          <td>
+                <code>[]</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>shm_size</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[int, str, None]</code>
+          </td>
+          <td><p>Size of /dev/shm. <code>int</code> is for bytes. But you can use <code>"512m"</code> or
+<code>"4g"</code> for example.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>stop_timeout</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>Signal to stop a container (default "SIGTERM")</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>storage_options</code></td>
+          <td>
+                <code><span title="typing.List">List</span>[str]</code>
+          </td>
+          <td><p>Storage driver options for the container</p></td>
+          <td>
+                <code>[]</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>tty</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Allocate a pseudo-TTY. Allow the process to access your terminal
+to write on it.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>user</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Username or UID (format: <code>&lt;name|uid&gt;[:&lt;group|gid&gt;]</code>)</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>userns</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>User namespace to use</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>uts</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>UTS namespace to use</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>volumes</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[<span title="python_on_whales.components.volume.cli_wrapper">python_on_whales</span>.<span title="python_on_whales.components.volume.cli_wrapper.components">components</span>.<span title="python_on_whales.components.volume.cli_wrapper.components.volume">volume</span>.<span title="python_on_whales.components.volume.cli_wrapper.components.volume.cli_wrapper">cli_wrapper</span>.<span title="python_on_whales.components.volume.cli_wrapper.components.volume.cli_wrapper.VolumeDefinition">VolumeDefinition</span>]]</code>
+          </td>
+          <td><p>Bind mount a volume. Some examples:
+<code>[("/", "/host"), ("/etc/hosts", "/etc/hosts", "rw")]</code>.</p></td>
+          <td>
+                <code>[]</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>volume_driver</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Optional volume driver for the container</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>workdir</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="python_on_whales.utils.ValidPath">ValidPath</span>]</code>
+          </td>
+          <td><p>The directory in the container where the process will be executed.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.run--returns">Returns</h3>
+<pre><code>The container output as a string if detach is `False` (the default),
+and a `python_on_whales.Container` if detach is `True`.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.start" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">start</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">start</span><span class="p">(</span><span class="n">containers</span><span class="p">,</span> <span class="n">attach</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Starts one or more stopped containers.</p>
+<p>Aliases: <code>docker.start</code>, <code>docker.container.start</code>,
+<code>python_on_whales.Container.start</code>.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>containers</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span>, <span title="typing.List">List</span>[<span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span>]]</code>
+          </td>
+          <td><p>One or a list of containers.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.stats" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">stats</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">stats</span><span class="p">(</span><span class="n">containers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">all</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Get containers resource usage statistics</p>
+<p>Alias: <code>docker.stats(...)</code></p>
+<p>Usage:</p>
+<pre><code class="language-python">from python_on_whales import docker
+
+docker.run(&quot;redis&quot;, detach=True)
+print(docker.stats())
+# [&lt;&lt;class 'python_on_whales.components.container.ContainerStats'&gt; object,
+# attributes are block_read=0, block_write=0, cpu_percentage=0.08,
+# container=e90ae41a5b17,
+# container_id=e90ae41a5b17df998584141692f1e361c485e8d00c37ee21fdc360d3523dd1c1,
+# memory_percentage=0.18, memory_used=11198791, memory_limit=6233071288,
+# container_name=crazy_northcutt, net_upload=696, net_download=0&gt;]
+</code></pre>
+<p>The data unit is the byte.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>all</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Get the stats of all containers, not just running ones.</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>containers</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[<span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span>, <span title="typing.List">List</span>[<span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span>]]]</code>
+          </td>
+          <td><p>One or a list of containers.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.stats--returns">Returns</h3>
+<pre><code>A `List[python_on_whales.ContainerStats]`.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.stop" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">stop</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">stop</span><span class="p">(</span><span class="n">containers</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Stops one or more running containers</p>
+<p>Alias: <code>docker.stop(...)</code></p>
+<p>Aliases: <code>docker.stop</code>, <code>docker.container.stop</code>,
+<code>python_on_whales.Container.stop</code>.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>containers</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span>, <span title="typing.List">List</span>[<span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span>]]</code>
+          </td>
+          <td><p>One or a list of containers.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>time</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[int, <span title="datetime.timedelta">timedelta</span>]</code>
+          </td>
+          <td><p>Seconds to wait for stop before killing a container (default 10)</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.stop--raises">Raises</h3>
+<pre><code>`python_on_whales.exceptions.NoSuchContainer` if the container does not exists.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.top" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">top</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">top</span><span class="p">()</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Get the running processes of a container</p>
+<p>Alias: <code>docker.top(...)</code></p>
+<p>Not yet implemented</p>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.unpause" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">unpause</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">unpause</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Unpause all processes within one or more containers</p>
+<p>Alias: <code>docker.unpause(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>x</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span>, <span title="typing.List">List</span>[<span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span>]]</code>
+          </td>
+          <td><p>One or more containers (name, id or <code>python_on_whales.Container</code> object).</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.unpause--raises">Raises</h3>
+<pre><code>`python_on_whales.exceptions.NoSuchContainer` if the container does not exists.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.update" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">update</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">update</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">blkio_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpu_period</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpu_quota</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpu_rt_period</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpu_rt_runtime</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpu_shares</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpus</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpuset_cpus</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cpuset_mems</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kernel_memory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">memory_reservation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">memory_swap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pids_limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">restart</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Update configuration of one or more containers</p>
+<p>Alias: <code>docker.update(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>x</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span>, <span title="typing.List">List</span>[<span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span>]]</code>
+          </td>
+          <td><p>One or a list of containers to update.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>blkio_weight</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>Block IO (relative weight), between 10 and 1000,
+or 0 to disable (default 0)</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cpu_period</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>Limit CPU CFS (Completely Fair Scheduler) period</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cpu_quota</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>Limit CPU CFS (Completely Fair Scheduler) quota</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cpu_rt_period</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>Limit CPU real-time period in microseconds</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cpu_rt_runtime</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>Limit CPU real-time runtime in microseconds</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cpu_shares</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>CPU shares (relative weight)</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cpus</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[float]</code>
+          </td>
+          <td><p>The maximal amount of cpu the container can use.
+<code>1</code> means one cpu core.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cpuset_cpus</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[int]]</code>
+          </td>
+          <td><p>CPUs in which to allow execution. Must be given as a list.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cpuset_mems</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[int]]</code>
+          </td>
+          <td><p>MEMs in which to allow execution. Must be given as a list.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>memory</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[int, str, None]</code>
+          </td>
+          <td><p>Memory limit, valid values are <code>1024</code> (ints are bytes) or
+<code>"43m"</code> or <code>"6g"</code>.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>memory_reservation</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[int, str, None]</code>
+          </td>
+          <td><p>Memory soft limit</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>memory_swap</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[int, str, None]</code>
+          </td>
+          <td><p>Swap limit equal to memory plus swap: '-1'
+to enable unlimited swap.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>pids_limit</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td><p>Tune container pids limit (set <code>-1</code> for unlimited)</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>restart</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Restart policy to apply when a container exits (default "no")</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.update--raises">Raises</h3>
+<pre><code>`python_on_whales.exceptions.NoSuchContainer` if the container does not exists.
+</code></pre>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.wait" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">wait</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span class="n">wait</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Block until one or more containers stop, then returns their exit codes</p>
+<p>Alias: <code>docker.wait(...)</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>x</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span>, <span title="typing.List">List</span>[<span title="python_on_whales.components.container.cli_wrapper.ValidContainer">ValidContainer</span>]]</code>
+          </td>
+          <td><p>One or a list of containers to wait for.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.wait--returns">Returns</h3>
+<pre><code>An `int` if a single container was passed as argument or a list of ints
+if multiple containers were passed as arguments.
+</code></pre>
+<p>Some Examples:</p>
+<pre><code class="language-python">cont = docker.run(&quot;ubuntu&quot;, [&quot;bash&quot;, &quot;-c&quot;, &quot;sleep 2 &amp;&amp; exit 8&quot;], detach=True)
+
+exit_code = docker.wait(cont)
+
+print(exit_code)
+# 8
+docker.container.remove(cont)
+</code></pre>
+<pre><code class="language-python">cont_1 = docker.run(&quot;ubuntu&quot;, [&quot;bash&quot;, &quot;-c&quot;, &quot;sleep 4 &amp;&amp; exit 8&quot;], detach=True)
+cont_2 = docker.run(&quot;ubuntu&quot;, [&quot;bash&quot;, &quot;-c&quot;, &quot;sleep 2 &amp;&amp; exit 10&quot;], detach=True)
+
+exit_codes = docker.wait([cont_1, cont_2])
+
+print(exit_codes)
+# [8, 10]
+docker.container.remove([cont_1, cont_2])
+</code></pre>
+<h3 id="python_on_whales.components.container.cli_wrapper.ContainerCLI.wait--raises">Raises</h3>
+<pre><code>`python_on_whales.exceptions.NoSuchContainer` if the container does not exists.
+</code></pre>
+
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>
